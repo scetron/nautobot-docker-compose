@@ -13,6 +13,16 @@ The purpose of this repo is to have a 'playground' for users to see and test aga
 
 # Verification Commands
 
+## ldapsearch
+
+Search the LDAP for a user with the sn=fry. The default is to search all of the objects under the DN in the `-b` (base DN) DN.
+
+`ldapsearch -h localhost -b dc=planetexpress,dc=com -D "cn=admin,dc=planetexpress,dc=com" -w admin '(sn=fry)'`
+
+## LDAP Configuration
+
+> These are to troubleshoot the existing directory within this project. It is likely that you will not use these when interfacing with a real LDAP server.
+
 If you make any changes to the included LDAP objects, you can verify them with this command. The `-n` directive will not actually make  the changes, just verify them. 
 
 `ldapadd -H localhost -D "cn=admin,dc=planetexpress,dc=com" -w 'admin' -n -f environments/directory.ldif`
