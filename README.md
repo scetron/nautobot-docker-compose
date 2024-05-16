@@ -1,3 +1,26 @@
+# Purpose
+
+The purpose of this repo is to have a 'playground' for users to see and test against an actual LDAP service. It is not meant to be a stand in for an actual directory and is for lab use only. 
+
+# Included Users and Django user flags
+
+| username | flag |
+| theprofessor | superuser |
+| leela | superuser |
+| bender | staff |
+| fry | staff |
+| hermes | active |
+
+# Verification Commands
+
+If you make any changes to the included LDAP objects, you can verify them with this command. The `-n` directive will not actually make  the changes, just verify them. 
+
+`ldapadd -H localhost -D "cn=admin,dc=planetexpress,dc=com" -w 'admin' -n -f environments/directory.ldif`
+
+Additionally, if changes are made to the `directory.ldif` file you can run the LDAP container with `log_level=debug` to see any issues in the docker logs.
+
+
+
 # nautobot-docker-compose
 
 Network to Code has an existing published Nautobot Docker Image on Docker Hub. See [here](https://hub.docker.com/repository/docker/networktocode/nautobot). This project uses Docker Compose. The Docker compose file in this project pulls that Nautobot Docker image using the latest stable Nautobot release along with several other Docker images required for Nautobot to function. See the diagram below. This project is for those looking for a multi-container single-node install for Nautobot often coupled with backup & HA capabilities from their hypervisor manager.

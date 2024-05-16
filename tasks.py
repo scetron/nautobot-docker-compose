@@ -1,4 +1,5 @@
 """Development Tasks."""
+
 from distutils.util import strtobool
 from time import sleep
 import os
@@ -26,7 +27,7 @@ def is_truthy(arg):
 namespace = Collection("nautobot_docker_compose")
 namespace.configure(
     {
-        "nautobot-docker-compose": {
+        "nautobot_docker_compose": {
             "project_name": "nautobot_docker_compose",
             "python_ver": "3.8",
             "local": False,
@@ -34,7 +35,7 @@ namespace.configure(
             "compose_dir": os.path.join(os.path.dirname(__file__), "environments/"),
             "compose_files": [
                 "docker-compose.postgres.yml",
-                "docker-compose.base.yml",
+                "docker-compose.ldap.yml",
                 "docker-compose.local.yml",
             ],
         }
@@ -140,21 +141,21 @@ def debug(context):
 
 
 @task
-def start(context):
+def start(context, service=""):
     """Start Nautobot and its dependencies in detached mode."""
     print("Starting Nautobot in detached mode...")
     docker_compose(context, "up --detach")
 
 
 @task
-def restart(context):
+def restart(context, service=""):
     """Gracefully restart all containers."""
     print("Restarting Nautobot...")
     docker_compose(context, "restart")
 
 
 @task
-def stop(context):
+def stop(context, service=""):
     """Stop Nautobot and its dependencies."""
     print("Stopping Nautobot...")
     docker_compose(context, "down")

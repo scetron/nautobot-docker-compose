@@ -1,0 +1,131 @@
+version: 1
+
+dn: ou=Accounting,dc=planetexpress, dc=com
+changetype: add
+ou: Accounting
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=Janitorial,dc=planetexpress, dc=com
+changetype: add
+ou: Janitorial
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=Management,dc=planetexpress, dc=com
+changetype: add
+ou: Management
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=Administrative,dc=planetexpress, dc=com
+changetype: add
+ou: Administrative
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=Delivery,dc=planetexpress, dc=com
+changetype: add
+ou: Delivery
+objectClass: top
+objectClass: organizationalUnit
+
+dn: cn=employees,dc=planetexpress,dc=com
+cn: employees
+gidNumber: 626
+objectClass: top
+objectclass: posixGroup
+
+dn: cn=nautobot staff,dc=planetexpress,dc=com
+cn: staff
+gidNumber: 626
+objectClass: top
+objectclass: posixGroup
+
+dn: cn=nautobot admin=,dc=planetexpress,dc=com
+cn: staff
+gidNumber: 626
+objectClass: top
+objectclass: posixGroup
+
+dn: cn=Turanga Leela,ou=Delivery,dc=planetexpress, dc=com
+changetype: add
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+cn: Turanga Leela
+sn: leela
+description: This is Turanga Leela's description
+userPassword: nautobot
+
+dn: cn=Hubert Farnsworth,ou=Management,dc=planetexpress, dc=com
+changetype: add
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+cn: Hubert Farnsworth
+sn: theprofessor
+userPassword: nautobot
+
+dn: cn=Bender Rodriguez,ou=Delivery,dc=planetexpress, dc=com
+changetype: add
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+cn: Bender Rodriguez
+sn: bender
+userPassword: nautobot
+
+dn: cn=Philip J Fry,ou=Delivery,dc=planetexpress, dc=com
+changetype: add
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+cn: Philip J Fry
+sn: fry
+userPassword: nautobot
+
+dn: cn=employees,dc=planetexpress,dc=com
+changetype: modify
+add: memberSn
+memberSn: fry
+
+dn: cn=employees,dc=planetexpress,dc=com
+changetype: modify
+add: memberSn
+memberSn: bender
+
+dn: cn=employees,dc=planetexpress,dc=com
+changetype: modify
+add: memberSn
+memberSn: theprofessor
+
+dn: cn=employees,dc=planetexpress,dc=com
+changetype: modify
+add: memberSn
+memberSn: leela
+
+dn: cn=employees,dc=planetexpress,dc=com
+changetype: modify
+add: memberSn
+memberSn: hermes
+
+dn: cn=nautobot staff,dc=planetexpress,dc=com
+changetype: modify
+add: memberSn
+memberSn: fry
+
+dn: cn=nautobot staff,dc=planetexpress,dc=com
+changetype: modify
+add: memberSn
+memberSn: bender
+
+dn: cn=nautobot admin,dc=planetexpress,dc=com
+changetype: modify
+add: memberSn
+memberSn: leela
+
+dn: cn=nautobot admin,dc=planetexpress,dc=com
+changetype: modify
+add: memberSn
+memberSn: theprofessor

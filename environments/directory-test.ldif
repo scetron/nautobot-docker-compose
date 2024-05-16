@@ -1,0 +1,38 @@
+version: 1
+
+dn: cn=Turanga Leela,ou=Delivery,dc=planetexpress, dc=com
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: Turanga Leela
+sn: leela
+description: This is Turanga Leela's description
+userPassword: nautobot
+
+dn: cn=Hubert Farnsworth,ou=Management,dc=planetexpress, dc=com
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: Hubert Farnsworth
+sn: theprofessor
+userPassword: nautobot
+
+dn: cn=Bender Rodriguez,ou=Delivery,dc=planetexpress, dc=com
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: Bender Rodriguez
+sn: bender
+userPassword: nautobot
+
+dn: cn=Philip J Fry,ou=Delivery,dc=planetexpress, dc=com
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: Philip J Fry
+sn: fry
+userPassword: nautobot

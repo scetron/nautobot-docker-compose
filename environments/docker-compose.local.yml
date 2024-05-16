@@ -6,7 +6,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - "../config/nautobot_config.py:/opt/nautobot/nautobot_config.py"
+      - "../config/nautobot_config.py:/opt/nautobot/nautobot_config.ldap.py"
       - "../jobs:/opt/nautobot/jobs"
     healthcheck:
       interval: "30s"
@@ -16,5 +16,5 @@ services:
       test: ["CMD", "true"]  # Due to layering, disable: true won't work. Instead, change the test
   celery_worker:
     volumes:
-      - "../config/nautobot_config.py:/opt/nautobot/nautobot_config.py"
+      - "../config/nautobot_config.py:/opt/nautobot/nautobot_config.ldap.py"
       - "../jobs:/opt/nautobot/jobs"

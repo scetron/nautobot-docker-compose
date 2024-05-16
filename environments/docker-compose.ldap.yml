@@ -9,7 +9,7 @@ x-nautobot-build: &nautobot-build
     target: "nautobot"
     dockerfile: "environments/Dockerfile-LDAP"
 x-nautobot-base: &nautobot-base
-  image: "companyname/nautobot-ldap"
+  image: "test/nautobot-ldap"
   env_file:
     - "local.env"
     - "creds.env"
@@ -21,7 +21,8 @@ services:
       - "db"
       - "redis"
     <<: [*nautobot-base, *nautobot-build]
-    # volumes:
+    volumes:
+      - "../config/nautobot_config.py.ldap:/opt/nautobot/nautobot_config.py:ro"
     #   - "./nautobot.key:/opt/nautobot/nautobot.key:ro"
     #   - "./nautobot.crt:/opt/nautobot/nautobot.crt:ro"
   celery_worker:
@@ -65,3 +66,21 @@ services:
       - "-c"  # this is to evaluate the $REDIS_PASSWORD from the env
       - "redis-server --appendonly yes --requirepass $$NAUTOBOT_REDIS_PASSWORD"  ## $$ because of docker-compose
     restart: "unless-stopped"
+  ldap:
+    image: "osixia/openldap:1.5.0"
+    environment:
+      LDAP_ORGANISATION: "planetexpress"
+      LDAP_DOMAIN: "planetexpress.com"
+      LDAP_ADMIN_PASSWORD: "admin"
+      LDAP_BASE_DN: "dc=planetexpress,dc=com"
+      LDAP_SEED_INTERNAL_LDIF_PATH: "/tmp/directory.ldif"
+      LOG_LEVEL: "debug"
+      log_level: "debug"
+    ports:
+      - "389:389"
+      - "636:636"
+    volumes:
+      - "./directory.ldif:/tmp/directory.ldif"
+    restart: "unless-stopped"
+
+
